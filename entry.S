@@ -58,11 +58,6 @@ __Vectors_End:
 .extern (entry_c)
 
 Reset_Handler:
-  NOP
-
-  MOVS R0,#1
-
-
   BL entry_c
 
 endless_loop:
