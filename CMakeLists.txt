@@ -55,3 +55,5 @@ add_custom_command(
 set_target_properties(
   testApp
   PROPERTIES ADDITIONAL_CLEAN_FILES $<TARGET_FILE_BASE_NAME:testApp>.bin )
+
+set(CMAKE_BUILD_TYPE Debug)

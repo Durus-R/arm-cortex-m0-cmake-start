@@ -61,9 +61,7 @@ Reset_Handler:
   NOP
 
   MOVS R0,#1
-start_loop:
-  CMP R0,#0
-  BNE start_loop
+
 
   BL entry_c
 
