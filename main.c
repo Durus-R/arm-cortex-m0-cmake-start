@@ -3,21 +3,11 @@
 //
 
 #include "devices/random.h"
+#include "devices/uart.h"
 
 #include <stdbool.h>
+#include <string.h>
 
-static void waitRelease( void )
-{
-  bool start = false;
-  while ( !start )
-  {
-  }
-}
-
-static void doRandomNumber( uint8_t randomNumber )
-{
-  (void)randomNumber;
-}
 
 int main( void )
 {
@@ -26,10 +16,9 @@ int main( void )
   // Initialize the Module
   rng_init();
 
-  while ( true )
-  {
-    uint8_t randomNumber = rng_getRandomValue_waiting();
-
-    doRandomNumber( randomNumber );
+  uart_init();
+  for (int i=0; i< strlen("Hello World!"); i++) {
+    uart_writeByte("Hello World"[i]);
   }
+  while ( 1 );
 }
