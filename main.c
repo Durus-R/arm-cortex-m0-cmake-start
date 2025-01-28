@@ -8,17 +8,38 @@
 #include <stdbool.h>
 #include <string.h>
 
+static void waitRelease( void );
+
+static void randomNumberTest( void );
 
 int main( void )
 {
   //waitRelease();
 
+  uart_init();
+  uart_writeString( "Hello World!\n" );
+ // randomNumberTest();
+}
+
+static void waitRelease( void )
+{
+  bool start = false;
+  while ( !start )
+  {
+  }
+}
+
+static void randomNumberTest( void )
+{
   // Initialize the Module
   rng_init();
 
-  uart_init();
-  for (int i=0; i< strlen("Hello World!"); i++) {
-    uart_writeByte("Hello World"[i]);
+  while ( true )
+  {
+    uint8_t randomNumber = rng_getRandomValue_waiting();
+
+    uart_writeNumber( randomNumber );
+    uart_writeString( "\n" );
   }
   while ( 1 );
 }
